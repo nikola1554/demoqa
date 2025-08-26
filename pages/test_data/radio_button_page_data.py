@@ -1,0 +1,6 @@
+page_url = 'https://demoqa.com/radio-button'
+radio_button_yes_locator = 'Yes'
+radio_button_no_locator = 'No'
+radio_button_impressive_locator = 'Impressive'
+result_text_locator = '.mt-3'
+expected_result_text = 'You have selected '
