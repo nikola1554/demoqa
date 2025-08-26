@@ -1,15 +1,19 @@
-from playwright.sync_api import Page, expect
+from playwright.sync_api import Page
+from pages.radio_button_page import RadioButtonPage
 
 def test_yes_radio_button(page: Page):
-   page.goto("https://demoqa.com/")
-   page.get_by_text('Elements').click()
-   page.get_by_text('Radio Button').click()
-   page.get_by_text('Yes').click()
-   expect(page.locator('.mt-3')).to_be_visible()
-   expect(page.locator('.mt-3')).to_have_text('You have selected Yes')
+    radio_button_page = RadioButtonPage(page)
+    radio_button_page.open_page()
+    radio_button_page.chose_radio_yes()
+    radio_button_page.check_result_text('Yes')
 
-def test_has_title_radio_button(page: Page):
-    page.goto("https://demoqa.com/")
-    page.get_by_text('Elements').click()
-    page.get_by_text('Radio Button').click()
-    expect(page.get_by_role("heading", name="Radio Button")).to_be_visible()
+def test_impressive_radio_button(page: Page):
+    radio_button_page = RadioButtonPage(page)
+    radio_button_page.open_page()
+    radio_button_page.chose_radio_impressive()
+    radio_button_page.check_result_text('Impressive')
+
+def test_no_radio_button(page: Page):
+    radio_button_page = RadioButtonPage(page)
+    radio_button_page.open_page()
+    radio_button_page.check_radio_no_is_disabled()
